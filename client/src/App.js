@@ -7,13 +7,13 @@ function App() {
   const [rollNumber, setRollNumber] = useState('');
 
   useEffect(() => {
-    axios.get('http://localhost:5005/students')
+    axios.get('api/students')
       .then((response) => setStudents(response.data.students))
       .catch((error) => console.error(error));
   }, []);
 
   const addStudent = () => {
-    axios.post('http://localhost:5005/students', { name, rollNumber })
+    axios.post('api/students', { name, rollNumber })
       .then((response) => {
         setStudents([...students, { id: response.data.studentId, name, roll_number: rollNumber }]);
         setName('');
